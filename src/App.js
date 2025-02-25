@@ -6,7 +6,7 @@ import Content from './components/Content'
 import Footer from './components/Footer'
 
 const App = () => {
-  const [item, setItem] = useState(JSON.parse(localStorage.getItem('shoppingList')))
+  const [item, setItem] = useState(JSON.parse(localStorage.getItem('shoppingList')) || [])
   const [newItem, setNewItem] = useState('')
   const [searchItem, setSearchItem] = useState('')
 
