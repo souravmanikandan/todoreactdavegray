@@ -1,9 +1,5 @@
-import { useState } from 'react'
 
 const AddItem = ({ newItem, setNewItem, addItem }) => {
-
-
-
   return (
     <form className='flex gap-1 w-11/12 self-center m-1' onSubmit={addItem}>
         <label htmlFor="item" className='absolute -left-full '>Item</label>
