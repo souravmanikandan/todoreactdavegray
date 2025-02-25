@@ -6,32 +6,28 @@ import Content from './components/Content'
 import Footer from './components/Footer'
 
 const App = () => {
-  const [item, setItem] = useState([
-    { id: 1, checked: false, item: "Milk" },
-    { id: 2, checked: false, item: "Bread" },
-    { id: 3, checked: false, item: "Eggs" },
-    { id: 4, checked: false, item: "Apples" },
-    { id: 5, checked: false, item: "Rice" }
-  ])
+  const [item, setItem] = useState(JSON.parse(localStorage.getItem('shoppingList')))
   const [newItem, setNewItem] = useState('')
   const [searchItem, setSearchItem] = useState('')
 
   const addItem = (e) => {
     e.preventDefault();
     item.push({ id:item.length + 1, checked:false, item:newItem})
+    localStorage.setItem('shoppingList', JSON.stringify(item))
     setNewItem('')
   }
 
   const handleCheck =(id) => {
     const updatedItems = item.map(item => item.id === id ? {...item , checked: !item.checked} : item)
     setItem(updatedItems)
+    localStorage.setItem('shoppingList', JSON.stringify(item))
   }
 
   const deleteItem = (id) => {
     const updatedItem = item.filter(item => item.id !== id)
     setItem(updatedItem)
+    localStorage.setItem('shoppingList', JSON.stringify(item))
   }
-    console.log(searchItem)
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
