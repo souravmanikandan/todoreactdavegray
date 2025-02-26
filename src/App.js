@@ -16,7 +16,8 @@ const App = () => {
 
   const addItem = (e) => {
     e.preventDefault();
-    const currentItem = { id:item.length + 1, checked:false, item:newItem }
+    const id = item.length ? item[item.length - 1].id + 1 : 1;
+    const currentItem = { id, checked:false, item:newItem }
     const listItem = [...item, currentItem]
     setItem(listItem)
     setNewItem('')
@@ -25,13 +26,13 @@ const App = () => {
   const handleCheck =(id) => {
     const updatedItems = item.map(item => item.id === id ? {...item , checked: !item.checked} : item)
     setItem(updatedItems)
-    localStorage.setItem('shoppingList', JSON.stringify(item))
+    
   }
 
   const deleteItem = (id) => {
     const updatedItem = item.filter(item => item.id !== id)
     setItem(updatedItem)
-    localStorage.setItem('shoppingList', JSON.stringify(item))
+    
   }
   return (
     <div className='flex flex-col min-h-screen'>
