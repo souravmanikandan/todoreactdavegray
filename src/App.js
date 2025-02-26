@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './components/Header'
 import AddItem from './components/AddItem'
 import SearchItem from './components/SearchItem'
@@ -10,10 +10,15 @@ const App = () => {
   const [newItem, setNewItem] = useState('')
   const [searchItem, setSearchItem] = useState('')
 
+  useEffect(() => {
+    localStorage.setItem('shoppingList', JSON.stringify(item))
+  },[item])
+
   const addItem = (e) => {
     e.preventDefault();
-    item.push({ id:item.length + 1, checked:false, item:newItem})
-    localStorage.setItem('shoppingList', JSON.stringify(item))
+    const currentItem = { id:item.length + 1, checked:false, item:newItem }
+    const listItem = [...item, currentItem]
+    setItem(listItem)
     setNewItem('')
   }
 
