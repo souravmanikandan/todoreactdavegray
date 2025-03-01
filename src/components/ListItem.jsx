@@ -1,4 +1,3 @@
-import React from 'react'
 import LineItem from './LineItem'
 
 const ListItem = ({ item, setItem, handleCheck, deleteItem }) => {

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SearchItem = ({ searchItem, setSearchItem }) => {
   return (
     <form className='w-11/12 self-center' onSubmit={(e) => e.preventDefault()}>
